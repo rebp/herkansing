@@ -50,8 +50,8 @@
                         <nav id="primary-menu">
 
                             <ul>
-                                <li><a href="#"><div>Login</div></a></li>
-                                <li><a href="#"><div>Register</div></a></li>
+                                <li><a href="{{ route('login') }}"><div>Login</div></a></li>
+                                <li><a href="{{ route('register') }}"><div>Register</div></a></li>
                             </ul>
 
                         </nav><!-- #primary-menu end -->
@@ -59,9 +59,9 @@
                         <div id="top-account" class="dropdown">
                             <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{ Auth::user()->name }} <i class="icon-user"></i><i class="icon-angle-down"></i></a>
                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                                <li><a href="#"><i class="icon-dashboard"></i> Dashboard</a></li>
+                                <li><a href="{{ route('dashboard') }}"><i class="icon-dashboard"></i> Dashboard</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="{#"><i class="icon-signout"></i> Logout</a></li>
+                                <li><a href="{{ url('logout') }}"><i class="icon-signout"></i> Logout</a></li>
                             </ul>
                         </div>
                     @endif
