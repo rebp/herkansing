@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration
             $table->integer('role_id')->index()->unsigned()->default(3);
             $table->string('photo_id')->nullable();
             $table->integer('is_active')->default(0);
-            $table->string('name');
-            $table->text('about_me')->after('email')->nullable();
-            $table->string('email')->unique();
+            $table->string('name');            
+            $table->string('email', 250)->unique();
+            $table->text('about_me')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -1,6 +1,7 @@
 <?php
 
-use Category;
+
+use App\Category;
 use Illuminate\Database\Seeder;
 
 class CategoriesSeeder extends Seeder
@@ -12,19 +13,19 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
-        $category_1 = Category::create([
+        $laravel = Category::create([
             'name' => 'Laravel',
         ]);
 
-        $category_2 = Category::create([
+        $php = Category::create([
             'name' => 'PHP',
         ]);
 
-        $category_3 = Category::create([
+        $javascript = Category::create([
             'name' => 'Javascript',
         ]);
 
-        $category_4 = Category::create([
+        $python = Category::create([
             'name' => 'Python',
         ]);
     }
