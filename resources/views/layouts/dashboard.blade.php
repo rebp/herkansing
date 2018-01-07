@@ -41,7 +41,7 @@
 
                         <div class="heading-block noborder">
                             <h3>{{ auth()->user()->name }}</h3>
-                            <span>Admin</span>
+                            <span>{{ auth()->user()->role->name }}</span>
                         </div>
                     </div>
 
@@ -50,18 +50,30 @@
 					<nav id="primary-menu">
 
 						<ul>
-							<li><a href="#"><div><i class="icon-users"></i> Users</div>
-								<ul>
-									<li><a href=""><div>All Useres</div></a></li>
-									<li><a href=""><div>Create User</div></a></li>									
-								</ul>
-							</li>							
-							<li><a href="#"><div><i class="icon-pencil2"></i> Posts</div></a>
-								<ul>
-									<li><a href=""><div>All Posts</div></a></li>
-									<li><a href=""><div>Create Post</div></a></li>								
-								</ul>
-							</li>
+
+
+							@if ( auth()->user()->role_id == 1)
+								<li><a href="#"><div><i class="icon-users"></i> Users</div>
+									<ul>
+										<li><a href=""><div>All Useres</div></a></li>
+										<li><a href=""><div>Create User</div></a></li>									
+									</ul>
+								</li>
+							@else
+								<li><a href="#"><div><i class="icon-user"></i> Profile</div></a></li>
+							@endif
+
+							@if ( auth()->user()->role_id == 1 or auth()->user()->role_id == 2 )
+
+								<li><a href="#"><div><i class="icon-pencil2"></i> Posts</div></a>
+									<ul>
+										<li><a href=""><div>All Posts</div></a></li>
+										<li><a href=""><div>Create Post</div></a></li>								
+									</ul>
+								</li>
+
+							@endif
+
 							<li><a href="#"><div><i class="icon-reply"></i> Comments</div></a></li>
 							<li><a href="#"><div><i class="icon-folder-open"></i> Categories</div></a></li>
                             <li><a href="{{ route('home') }}"><div><i class="icon-blogger"></i> Blog</div></a></li>
