@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.public')
 
 @section('title', 'Blog')
 
@@ -23,12 +23,6 @@
 
 					</div><!-- #posts end -->
 
-					<!-- Pagination
-					============================================= -->
-					<ul class="pager nomargin">
-						<li class="previous"><a href="#">&larr; Older</a></li>
-						<li class="next"><a href="#">Newer &rarr;</a></li>
-					</ul><!-- .pager end -->
 
 				</div><!-- .postcontent end -->
 
