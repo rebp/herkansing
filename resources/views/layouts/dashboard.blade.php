@@ -64,7 +64,7 @@
 							</li>
 							<li><a href="#"><div><i class="icon-reply"></i> Comments</div></a></li>
 							<li><a href="#"><div><i class="icon-folder-open"></i> Categories</div></a></li>
-                            <li><a href="#"><div><i class="icon-blogger"></i> Blog</div></a></li>
+                            <li><a href="{{ route('home') }}"><div><i class="icon-blogger"></i> Blog</div></a></li>
                             <li><a href="{{ url('logout') }}"><div><i class="icon-signout"></i> Logout</div></a></li>
 						</ul>
 

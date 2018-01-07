@@ -19,7 +19,7 @@ class UsersSeeder extends Seeder
             'name' => 'Rober',
             'email' => 'admin@rebp.nl',
             'about_me' => null,
-            'password' => '$2y$10$Rw2ayiCDzWqsegCGsd81H.SJ6Ua.yKLiEh6lFzL09ACzGWk8HWAoe',
+            'password' => '$2y$10$LJqs8YNMH46jioWiepnzoecvXP0ivY7FX/ofHVyPlQ3CCIaEYLecm',
             
         ]);
     }

@@ -6,5 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable=[ 'name',];
+    protected $guarded = [];
+
+    public function posts() 
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function getId($category)
+    {
+        $this->where('name', $category);
+
+        return $this->id;
+    }
 }

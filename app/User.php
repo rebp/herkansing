@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -14,9 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -26,4 +25,32 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function Role() 
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function Photo() 
+    {
+        return $this->belongsTo(Photo::class);
+    }
+
+    public function Posts() 
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function isActive()
+    {
+        if ( $this->is_active == 1 ) {
+            return true;
+        } else {
+            return false;
+        }
+               
+    }
+
+
+
 }
