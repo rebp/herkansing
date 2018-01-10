@@ -25,7 +25,7 @@ mix.styles([
  'resources/assets/css/font-icons.css',
  'resources/assets/css/animate.css',
  'resources/assets/css/magnific-popup.css',
- 'resources/assets/css/responsive.css'
+ 'resources/assets/css/responsive.css',
 
 ], 'public/css/bundle.css');
 
@@ -34,6 +34,5 @@ mix.scripts([
  'resources/assets/js/jquery.js',
  'resources/assets/js/plugins.js',
  'resources/assets/js/functions.js',
- 'resources/assets/js/app.js'
 
 ], 'public/js/script.js');

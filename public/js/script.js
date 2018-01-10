@@ -4468,8 +4468,3 @@ var SEMICOLON = SEMICOLON || {};
 	$window.on( 'resize', SEMICOLON.documentOnResize.init );
 
 })(jQuery);
-$(document).ready(init);
-
-function init() {
-    
-}

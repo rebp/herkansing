@@ -7,7 +7,7 @@
 	<!-- Stylesheets
 	============================================= -->
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
-    <link href="{{ url('css/bundle.css') }}" rel="stylesheet">
+	<link href="{{ url('css/bundle.css') }}" rel="stylesheet">
     <link href="{{ url('css/style.css') }}" rel="stylesheet">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -55,8 +55,8 @@
 							@if ( auth()->user()->role_id == 1)
 								<li><a href="#"><div><i class="icon-users"></i> Users</div>
 									<ul>
-										<li><a href=""><div>All Useres</div></a></li>
-										<li><a href=""><div>Create User</div></a></li>									
+										<li><a href="{{ route('users.index') }}"><div>All Useres</div></a></li>
+										<li><a href="{{ route('users.create') }}"><div>Create User</div></a></li>									
 									</ul>
 								</li>
 							@else
@@ -98,6 +98,8 @@
 	<!-- Footer Scripts
 	============================================= -->
 	<script type="text/javascript" src="{{ url('js/script.js') }}"></script>
+	@yield('script')
+
 
 </body>
 </html>
