@@ -51,6 +51,16 @@ class User extends Authenticatable
                
     }
 
+    public function isAuthor()
+    {
+        if ( $this->role_id == 2 ) {
+            return true;
+        } else {
+            return false;
+        }
+               
+    }
+
 
     public function isActive()
     {

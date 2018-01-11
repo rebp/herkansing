@@ -51,6 +51,7 @@
 
 						<ul>
 
+							<li><a href="{{ route('profile.index') }}"><div><i class="icon-user"></i> Profile</div></a></li>
 
 							@if ( auth()->user()->isAdmin())
 								<li><a href="#"><div><i class="icon-users"></i> Users</div>
@@ -59,21 +60,21 @@
 										<li><a href="{{ route('users.create') }}"><div>Create User</div></a></li>									
 									</ul>
 								</li>								
+							@endif	
+								
+								
+							@if ( auth()->user()->isAdmin() or auth()->user()->isAuthor() )
+								<li><a href="#"><div><i class="icon-pencil2"></i> Posts</div></a>
+									<ul>
+										<li><a href="{{ route('posts.index') }}"><div>{{ ( auth()->user()->isAdmin() ) ? "All Posts" : "My Posts" }}</div></a></li>
+										<li><a href="{{ route('posts.create') }}"><div>Create Post</div></a></li>								
+									</ul>
+								</li>
+								<li><a href="{{ route('categories.index') }}"><div><i class="icon-folder-open"></i> Categories</div></a></li>
 							@endif
 
 
-							<li><a href="{{ route('profile.index') }}"><div><i class="icon-user"></i> Profile</div></a></li>
-
-							<li><a href="#"><div><i class="icon-pencil2"></i> Posts</div></a>
-								<ul>
-									<li><a href="{{ route('posts.index') }}"><div>{{ ( auth()->user()->isAdmin() ) ? "All Posts" : "My Posts" }}</div></a></li>
-									<li><a href="{{ route('posts.create') }}"><div>Create Post</div></a></li>								
-								</ul>
-							</li>
-
-
 							<li><a href="#"><div><i class="icon-reply"></i> Comments</div></a></li>
-							<li><a href="{{ route('categories.index') }}"><div><i class="icon-folder-open"></i> Categories</div></a></li>
                             <li><a href="{{ route('home') }}"><div><i class="icon-blogger"></i> Blog</div></a></li>
                             <li><a href="{{ route('logout') }}"><div><i class="icon-signout"></i> Logout</div></a></li>
 						</ul>
