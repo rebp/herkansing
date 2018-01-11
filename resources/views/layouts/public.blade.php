@@ -40,8 +40,8 @@
 					<!-- Logo
 					============================================= -->
 					<div id="logo">
-						<a href="{{ url('/') }}" class="standard-logo" data-dark-logo="{{ url('/images/logo-dark.png') }}"><img src="{{ url('/images/logo.png') }}" alt=""></a>
-						<a href="{{ url('/') }}" class="retina-logo" data-dark-logo="{{ url('/images/logo-dark@2x.png') }}"><img src="{{ url('/images/logo@2x.png') }}" alt=""></a>
+						<a href="{{ route('home') }}" class="standard-logo" data-dark-logo="{{ url('/images/logo-dark.png') }}"><img src="{{ url('/images/logo.png') }}" alt=""></a>
+						<a href="{{ route('home') }}" class="retina-logo" data-dark-logo="{{ url('/images/logo-dark@2x.png') }}"><img src="{{ url('/images/logo@2x.png') }}" alt=""></a>
 					</div><!-- #logo end -->
 
                     @if (Auth::guest())
@@ -61,7 +61,7 @@
                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                 <li><a href="{{ route('dashboard') }}"><i class="icon-dashboard"></i> Dashboard</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="{{ url('logout') }}"><i class="icon-signout"></i> Logout</a></li>
+                                <li><a href="{{ route('logout') }}"><i class="icon-signout"></i> Logout</a></li>
                             </ul>
                         </div>
                     @endif

@@ -44,12 +44,18 @@
                                     <strong>{{ $errors->first('email') }}</strong>
                                 </span>
                             @endif
-						</div>
+                        </div>
+
+                        @if ( auth()->user()->role_id == 2 or auth()->user()->role_id == 3 )
 
 						<div class="col_full">
                             {!! Form::label('role_id', 'Role') !!}
                             {!! Form::select('role_id', [2 => "author", 3 => "subscriber"], null, ['class' => 'sm-form-control']) !!}
-						</div>
+                        </div>
+                        
+                        @endif
+
+
 
                         <div class="col_full">
                             {!! Form::label('about_me', 'About Me') !!}

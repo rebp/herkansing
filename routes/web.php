@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -24,3 +24,5 @@ Route::resource('/dashboard/users', 'UsersController');
 Route::patch('/dashboard/user/status/{user}', 'UsersController@update_status')->name('update.user.status');
 
 Route::resource('/dashboard/profile', 'ProfileController');
+
+Route::resource('/dashboard/categories', 'CategoriesController');
