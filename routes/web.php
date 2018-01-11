@@ -22,3 +22,5 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::resource('/dashboard/users', 'UsersController');
 
 Route::patch('/dashboard/user/status/{user}', 'UsersController@update_status')->name('update.user.status');
+
+Route::resource('/dashboard/profile', 'ProfileController');

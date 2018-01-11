@@ -124,7 +124,7 @@
                             url: "/dashboard/user/status/" + user_id,
                             data: data,
                             success: function(data) {
-                                console.log(data);
+                                console.log("Status Updated");
                             },
                             error: function(err){
                                 console.log(err);

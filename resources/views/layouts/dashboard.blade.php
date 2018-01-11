@@ -60,7 +60,7 @@
 									</ul>
 								</li>
 							@else
-								<li><a href="#"><div><i class="icon-user"></i> Profile</div></a></li>
+								<li><a href="{{ route('profile.index') }}"><div><i class="icon-user"></i> Profile</div></a></li>
 							@endif
 
 							@if ( auth()->user()->role_id == 1 or auth()->user()->role_id == 2 )
