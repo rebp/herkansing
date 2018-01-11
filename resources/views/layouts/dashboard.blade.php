@@ -52,7 +52,7 @@
 						<ul>
 
 
-							@if ( auth()->user()->role_id == 1)
+							@if ( auth()->user()->isAdmin())
 								<li><a href="#"><div><i class="icon-users"></i> Users</div>
 									<ul>
 										<li><a href="{{ route('users.index') }}"><div>All Useres</div></a></li>
@@ -61,17 +61,16 @@
 								</li>								
 							@endif
 
-							@if ( auth()->user()->role_id == 1 or auth()->user()->role_id == 2 )
-								<li><a href="{{ route('profile.index') }}"><div><i class="icon-user"></i> Profile</div></a></li>
 
-								<li><a href="#"><div><i class="icon-pencil2"></i> Posts</div></a>
-									<ul>
-										<li><a href=""><div>All Posts</div></a></li>
-										<li><a href=""><div>Create Post</div></a></li>								
-									</ul>
-								</li>
+							<li><a href="{{ route('profile.index') }}"><div><i class="icon-user"></i> Profile</div></a></li>
 
-							@endif
+							<li><a href="#"><div><i class="icon-pencil2"></i> Posts</div></a>
+								<ul>
+									<li><a href="{{ route('posts.index') }}"><div>{{ ( auth()->user()->isAdmin() ) ? "All Posts" : "My Posts" }}</div></a></li>
+									<li><a href="{{ route('posts.create') }}"><div>Create Post</div></a></li>								
+								</ul>
+							</li>
+
 
 							<li><a href="#"><div><i class="icon-reply"></i> Comments</div></a></li>
 							<li><a href="{{ route('categories.index') }}"><div><i class="icon-folder-open"></i> Categories</div></a></li>

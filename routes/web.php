@@ -25,4 +25,6 @@ Route::patch('/dashboard/user/status/{user}', 'UsersController@update_status')->
 
 Route::resource('/dashboard/profile', 'ProfileController');
 
+Route::resource('/dashboard/posts', 'PostsController');
+
 Route::resource('/dashboard/categories', 'CategoriesController');

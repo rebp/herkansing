@@ -41,6 +41,17 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function isAdmin()
+    {
+        if ( $this->role_id == 1 ) {
+            return true;
+        } else {
+            return false;
+        }
+               
+    }
+
+
     public function isActive()
     {
         if ( $this->is_active == 1 ) {
