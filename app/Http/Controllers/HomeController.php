@@ -11,10 +11,9 @@ class HomeController extends Controller
     public function index()
     {
     $posts = Post::all();
-
     $categories = Category::all();
 
-    return view('public.index', compact('posts', 'categories'));
+    return view('public.index', compact('posts', 'categories', 'comments'));
 
     }
 

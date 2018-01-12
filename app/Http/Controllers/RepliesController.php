@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
+use App\Reply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class CommentsController extends Controller
+class RepliesController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,11 +26,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        $user_comments = Comment::where('author', Auth::user()->name)->get();
-        
-        $all_comments = Comment::all();
-
-        return view('dashboard.comments.index', compact('all_comments', 'user_comments'));
+        //
     }
 
     /**
@@ -51,25 +47,19 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'content' => 'required'          
-        ], [
-            'required' => 'This field is required.'
-        ]);
-
         $user = Auth::user();
         
         $data = [
-            'post_id' => $request->post_id,
+            'comment_id' => $request->comment_id,
             'author' => $user->name,
             'email' => $user->email,
             'photo' => $user->photo->file,
             'content' => $request->content,
         ];
 
-        Comment::create($data);
+        Reply::create($data);
 
-        Session::flash('created_comment', 'Comment successfully created.');
+        Session::flash('created_reply', 'Reply successfully created.');
                 
         return redirect()->back();
     }

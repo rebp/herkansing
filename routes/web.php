@@ -34,3 +34,5 @@ Route::get('/posts/category/{category}', "HomeController@category")->name('posts
 Route::resource('/dashboard/categories', 'CategoriesController');
 
 Route::resource('/dashboard/comments', 'CommentsController');
+
+Route::resource('/dashboard/replies', 'RepliesController');  

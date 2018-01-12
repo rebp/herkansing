@@ -118,104 +118,105 @@
 
 							<!-- Comments
 							============================================= -->
-							{{--  <div id="comments" class="clearfix">
+							<div id="comments" class="clearfix">
 
 								<h3 id="comments-title"><span>{{ count($post->comments) }}</span> Comments</h3>
 
 								<!-- Comments List
 								============================================= -->
-
 								
-									
+							
+								@if( count($post->comments) > 0 )
 								
+									<ol class="commentlist clearfix">
 
-								<ol class="commentlist clearfix">
-
-									@foreach($comments as $comment)
-
-										<li class="comment even thread-even depth-1" id="li-comment-1">
-
-											<div id="comment-{{$comment->id}}" class="comment-wrap clearfix">
-
-												<div class="comment-meta">
-
-													<div class="comment-author vcard">
-
-														<span class="comment-avatar clearfix">
-														<img alt='' src="{{ $comment->photo }}" class='avatar avatar-60 photo avatar-default' height='60' width='60' /></span>
-
+										@foreach($comments as $comment)
+	
+											<li class="comment even thread-even depth-1" id="li-comment-1">
+	
+												<div id="comment-{{$comment->id}}" class="comment-wrap clearfix">
+	
+													<div class="comment-meta">
+	
+														<div class="comment-author vcard">
+	
+															<span class="comment-avatar clearfix">
+															<img alt='' src="{{ $comment->photo }}" class='avatar avatar-60 photo avatar-default' height='60' width='60' /></span>
+	
+														</div>
+	
 													</div>
-
+	
+													<div class="comment-content clearfix">
+	
+														<div class="comment-author">{{ $comment->author }}<span><a href="#" title="Permalink to this comment">{{ $comment->created_at->diffForHumans() }}</a></span></div>
+	
+														<p>{{ $comment->content }}</p>
+	
+														@if(Auth::check())
+															<a class='comment-reply-link' href='#replyModal-{{ $comment->id }}' data-lightbox="inline"><i class="icon-reply"></i></a>
+															<div data-target="#replyModal-{{ $comment->id }}"></div>																	
+														@endif
+	
+													</div>
+	
+													<div class="clear"></div>
+	
 												</div>
-
-												<div class="comment-content clearfix">
-
-													<div class="comment-author">{{ $comment->author }}<span><a href="#" title="Permalink to this comment">{{ $comment->created_at->diffForHumans() }}</a></span></div>
-
-													<p>{{ $comment->content }}</p>
-
-													@if(Auth::check())
-														<a class='comment-reply-link' href='#replyModal-{{ $comment->id }}' data-lightbox="inline"><i class="icon-reply"></i></a>
-														<div data-target="#replyModal-{{ $comment->id }}"></div>																	
-													@endif
-
-												</div>
-
-												<div class="clear"></div>
-
-											</div>
-
-
-										@if($comment->replies)
-
-											<ul class='children'>
-
-													@foreach($comment->replies as $reply)
-
-														<li class="comment byuser comment-author-_smcl_admin odd alt depth-2" id="li-comment-3">
-
-															<div id="comment-3" class="comment-wrap clearfix">
-
-																<div class="comment-meta">
-
-																	<div class="comment-author vcard">
-
-																		<span class="comment-avatar clearfix">
-																		<img alt='' src='{{ $reply->photo }}' class='avatar avatar-40 photo' height='40' width='40' /></span>
-
+	
+	
+											@if($comment->replies)
+	
+												<ul class='children'>
+	
+														@foreach($comment->replies as $reply)
+	
+															<li class="comment byuser comment-author-_smcl_admin odd alt depth-2" id="li-comment-3">
+	
+																<div id="comment-3" class="comment-wrap clearfix">
+	
+																	<div class="comment-meta">
+	
+																		<div class="comment-author vcard">
+	
+																			<span class="comment-avatar clearfix">
+																			<img alt='' src='{{ $reply->photo }}' class='avatar avatar-40 photo' height='40' width='40' /></span>
+	
+																		</div>
+	
 																	</div>
-
+	
+																	<div class="comment-content clearfix">
+	
+																		<div class="comment-author"><a href='#' rel='external nofollow' class='url'>{{ $reply->author }}</a><span><a href="#" title="Permalink to this comment">{{ $reply->created_at->diffForHumans() }}</a></span></div>
+	
+																		<p>{{ $reply->content }}</p>
+	
+	
+																	</div>
+	
+																	<div class="clear"></div>
+	
 																</div>
+	
+															</li>
+												
+														@endforeach		
+	
+												</ul>									
+	
+	
+											@endif
+	
+											</li>
+	
+										@endforeach
+	
+									</ol><!-- .commentlist end -->
+	
+									<div class="clear"></div>
 
-																<div class="comment-content clearfix">
-
-																	<div class="comment-author"><a href='#' rel='external nofollow' class='url'>{{ $reply->author }}</a><span><a href="#" title="Permalink to this comment">{{ $reply->created_at->diffForHumans() }}</a></span></div>
-
-																	<p>{{ $reply->content }}</p>
-
-
-																</div>
-
-																<div class="clear"></div>
-
-															</div>
-
-														</li>
-											
-													@endforeach		
-
-											</ul>									
-
-
-										@endif
-
-										</li>
-
-									@endforeach
-
-								</ol><!-- .commentlist end -->
-
-								<div class="clear"></div>
+								@endif
 
 								@if (Auth::check())
 
@@ -225,7 +226,7 @@
 
 										<h3>Leave a <span>Comment</span></h3>
 
-										{!! Form::open((['action' => 'PostCommentsController@store', 'method' => 'post'])) !!}
+										{!! Form::open((['action' => 'CommentsController@store', 'method' => 'post'])) !!}
 
 											<div class="col_full">									
 												{!! Form::textarea('content', null, ['class' => 'sm-form-control']) !!}
@@ -249,7 +250,7 @@
 
 
 
-							</div><!-- #comments end -->  --}}
+							</div><!-- #comments end -->
 
 						</div>
 
@@ -265,8 +266,12 @@
 							<h4 class="highlight-me">Categories</h4>
 							<ul>
 								@foreach($categories as $category)
-									<li><a href="{{ url('/posts/category/' . strtolower($category->name)) }}"><div>{{ $category->name }}</div></a></li>
-								@endforeach	
+
+									@if( count($category->posts) > 0 )
+										<li><a href="{{ url('/posts/category/' . strtolower($category->name)) }}"><div>{{ $category->name }}</div></a></li>
+									@endif
+									
+								@endforeach		
 							</ul>
 
 						</div>
@@ -282,7 +287,7 @@
 		</section><!-- #content end -->
 		
 
-{{--  @if(count($comments) > 0)
+@if( count($comments) > 0 )
 
 	<!-- Modals -->
 	@foreach($comments as $comment)
@@ -292,7 +297,7 @@
 				<div class="center" style="padding: 50px;">
 					<h3>Reply this <span>Comment</span></h3>
 
-					{!! Form::open((['action' => 'CommentRepliesController@store', 'method' => 'post'])) !!}
+					{!! Form::open((['action' => 'RepliesController@store', 'method' => 'post'])) !!}
 
 						<div class="col_full">									
 							{!! Form::textarea('content', null, ['class' => 'sm-form-control', 'required' => true]) !!}
@@ -315,6 +320,6 @@
 		
 	@endforeach	
 
-@endif  --}}
+@endif
 
 @endsection
