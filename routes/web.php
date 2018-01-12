@@ -27,4 +27,8 @@ Route::resource('/dashboard/profile', 'ProfileController');
 
 Route::resource('/dashboard/posts', 'PostsController');
 
+Route::get('/post/{slug}', "HomeController@show")->name('show.post');
+
+Route::get('/posts/category/{category}', "HomeController@category")->name('posts.category');
+
 Route::resource('/dashboard/categories', 'CategoriesController');
