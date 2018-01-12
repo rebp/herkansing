@@ -74,7 +74,7 @@
 							@endif
 
 
-							<li><a href="#"><div><i class="icon-reply"></i> Comments</div></a></li>
+							<li><a href="{{ route('comments.index') }}"><div><i class="icon-reply"></i> Comments</div></a></li>
                             <li><a href="{{ route('home') }}"><div><i class="icon-blogger"></i> Blog</div></a></li>
                             <li><a href="{{ route('logout') }}"><div><i class="icon-signout"></i> Logout</div></a></li>
 						</ul>

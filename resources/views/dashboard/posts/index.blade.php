@@ -46,7 +46,7 @@
                     </thead>
                     <tbody>
 
-                        @if ( auth()->user()->role_id == 1)
+                        @if ( auth()->user()->isAdmin() )
                             @foreach($admin_posts as $post)
                                 <tr>
                                     <td>{{ $post->user->name }}</td>
