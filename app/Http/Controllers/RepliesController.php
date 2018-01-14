@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Reply;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -72,7 +73,11 @@ class RepliesController extends Controller
      */
     public function show($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+        
+        $replies = $comment->replies;
+
+        return view('dashboard.comments.replies.index', compact('replies'));
     }
 
     /**
@@ -106,6 +111,12 @@ class RepliesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reply = Reply::findOrFail($id); 
+        
+        $reply->delete();
+        
+        Session::flash('deleted_reply', 'Reply has been successfully deleted.');        
+    
+        return redirect()->back();
     }
 }
