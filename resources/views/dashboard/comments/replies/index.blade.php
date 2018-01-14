@@ -16,49 +16,52 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     </div>
                 @endif
-            
-                <h1>All Replies</h1>
 
-                <table class="table table-bordered table-striped">
-                    <colgroup>
-                        <col class="col-xs-2">
-                        <col class="col-xs-5">
-                        <col class="col-xs-2">
-                        <col class="col-xs-1">
-                        <col class="col-xs-1">
-                        <col class="col-xs-1">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>Author</th>
-                            <th>Reply</th>
-                            <th>In Response To</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                @if( count($replies) > 0 )
+                    <h1>All Replies</h1>
 
-                        @foreach($replies as $reply)
+                    <table class="table table-bordered table-striped">
+                        <colgroup>
+                            <col class="col-xs-2">
+                            <col class="col-xs-5">
+                            <col class="col-xs-2">
+                            <col class="col-xs-1">
+                            <col class="col-xs-1">
+                            <col class="col-xs-1">
+                        </colgroup>
+                        <thead>
                             <tr>
-                                <td>{{ $reply->author }}</td>
-                                <td>{{ $reply->content }}</td>
-                                <td>{{ $reply->comment->author }}</td>
-                                <td><a href="{{ route('show.post', $reply->comment->post->slug) }}">View Post</a></td>
-                                <td class="center">
-                                    {!! Form::open((['action' => ['RepliesController@destroy', $reply->id], 'method' => 'delete'])) !!}
-
-                                            {!! Form::submit('X', ['class' => 'button button-red']) !!}
-
-                                    {!! Form::close() !!}                                
-                                </td>
+                                <th>Author</th>
+                                <th>Reply</th>
+                                <th>In Response To</th>
+                                <th></th>
+                                <th></th>
                             </tr>
-                        @endforeach
+                        </thead>
+                        <tbody>
 
-                    </tbody>
-                </table>
+                            @foreach($replies as $reply)
+                                <tr>
+                                    <td>{{ $reply->author }}</td>
+                                    <td>{{ $reply->content }}</td>
+                                    <td>{{ $reply->comment->author }}</td>
+                                    <td><a href="{{ route('show.post', $reply->comment->post->slug) }}">View Post</a></td>
+                                    <td class="center">
+                                        {!! Form::open((['action' => ['RepliesController@destroy', $reply->id], 'method' => 'delete'])) !!}
 
-            
+                                                {!! Form::submit('X', ['class' => 'button button-red']) !!}
+
+                                        {!! Form::close() !!}                                
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
+                @else
+                     <h1>No Replies</h1>
+                @endif
+
             </div>
 
         </div>

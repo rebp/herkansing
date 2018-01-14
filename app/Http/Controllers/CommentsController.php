@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -82,7 +83,7 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        //     
     }
 
     /**

@@ -199,4 +199,15 @@ class PostsController extends Controller
     
         return redirect()->route('posts.index');
     }
+
+    public function postComments($id)
+    {
+
+        $post = Post::findOrFail($id);
+
+        $comments = $post->comments;
+
+        return view('dashboard.comments.show', compact('comments'));
+
+    }
 }
