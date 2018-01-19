@@ -49,12 +49,20 @@ class RepliesController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
+
+        $user_profile_photo;
+
+        if( $user->photo_id == null ) {
+            $user_profile_photo = "\images\icons\avatar.jpg";
+        } else {
+            $user_profile_photo = $user->photo->file;
+        }
         
         $data = [
             'comment_id' => $request->comment_id,
             'author' => $user->name,
             'email' => $user->email,
-            'photo' => $user->photo->file,
+            'photo' => $user_profile_photo,
             'content' => $request->content,
         ];
 

@@ -64,10 +64,8 @@
                                     <td>{{ $post->category ? $post->category->name : 'uncategorized' }}</td>
                                     <td>{{ $post->title }}</td>
                                     <td><a href="{{ route('posts.edit', $post->id) }}">Edit Post</a></td>
-                                    {{--  <td><a href="{{ route('home.post', $post->slug) }}">View Post</a></td>
-                                    <td><a href="{{ route('admin.comments.post', $post->id) }}">View Comments</a></td>  --}}
-                                    <td>View Post</td>
-                                    <td>View Comments</td>
+                                    <td><a href="{{ route('show.post', $post->slug) }}">View Post</a></td>
+                                    <td><a href="{{ route('show.post.comments', $post->id) }}">View Comments</a></td>
                                 </tr>
                             @endforeach
                         @endif

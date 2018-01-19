@@ -109,7 +109,7 @@
 								</div>
 								<div class="panel-body">
 									<div class="author-image">
-										<img src="{{ $post->user->photo ? $post->user->photo->file : url('images/author/1.jpg') }}" alt="" class="img-circle">
+										<img src="{{ $post->user->photo ? $post->user->photo->file : url('images/icons/avatar.jpg') }}" alt="" class="img-circle">
 									</div>
 									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eveniet, eligendi et nobis neque minus mollitia sit repudiandae ad repellendus recusandae blanditiis praesentium vitae ab sint earum voluptate velit beatae alias fugit accusantium laboriosam nisi reiciendis deleniti tenetur molestiae maxime id quaerat consequatur fugiat aliquam laborum nam aliquid. Consectetur, perferendis?
 								</div>
