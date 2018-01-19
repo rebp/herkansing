@@ -1,77 +1,80 @@
-@extends('layouts.app')
+@extends('layouts.public')
+
+@section('title', 'Register')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+    <!-- Content
+    ============================================= -->
+    <section id="content">
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+        <div class="content-wrap">
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+            <div class="container clearfix">
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                <div class="tabs divcenter nobottommargin clearfix" id="tab-login-register" style="max-width: 500px;">
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+                    <div class="tab-container">
+
+                        <div class="tab-content clearfix" id="tab-register">
+                            <div class="panel panel-default nobottommargin">
+                                <div class="panel-body" style="padding: 40px;">
+                                
+                                    <h3>Register for an Account</h3>
+
+                                    {!! Form::open(['action' => 'Auth\RegisterController@register', 'method' => 'post']) !!}
+
+
+                                        <div class="col_full">
+                                            {!! Form::label('name', 'Name') !!}
+                                            {!! Form::text('name', null, ['class' => 'sm-form-control']) !!}
+                                            @if ($errors->has('name'))
+                                                <span class="text-danger">
+                                                    <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+
+                                        <div class="col_full">
+                                            {!! Form::label('email', 'Email Address') !!}
+                                            {!! Form::text('email', null, ['class' => 'sm-form-control']) !!}	
+                                            @if ($errors->has('email'))
+                                                <span class="text-danger">
+                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+
+                                        <div class="col_full">
+                                            {!! Form::label('password', 'Password') !!}
+                                            {!! Form::password('password', ['class' => 'sm-form-control']) !!}  
+                                            @if ($errors->has('password'))
+                                                <span class="text-danger">
+                                                    <strong>{{ $errors->first('password') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+
+                                        <div class="col_full">
+                                            {!! Form::label('password_confirmation', 'Confirm Password') !!}
+                                            {!! Form::password('password_confirmation', ['class' => 'sm-form-control']) !!} 
+                                        </div>
+
+                                        <div class="col_full nobottommargin">
+                                            {!! Form::submit('Register', ['class' => 'button button-3d button-black nomargin']) !!}
+                                        </div>
+
+                                    {!! Form::close() !!}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                    </div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
+
             </div>
+
         </div>
-    </div>
-</div>
+
+    </section><!-- #content end -->
 @endsection
