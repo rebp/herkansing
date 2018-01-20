@@ -52,7 +52,16 @@
                             <ul>
                                 <li><a href="{{ route('login') }}"><div>Login</div></a></li>
                                 <li><a href="{{ route('register') }}"><div>Register</div></a></li>
-                            </ul>
+							</ul>
+							
+							<!-- Top Search
+							============================================= -->
+							<div id="top-search">
+								<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+								{!! Form::open(['action' => 'HomeController@search', 'method' => 'get', 'class' => 'nobottommargin']) !!}
+									{!! Form::text('q', null, ['class' => 'form-control', 'placeholder' => 'Search Post ...']) !!}								
+								{!! Form::close() !!}
+							</div><!-- #top-search end -->
 
                         </nav><!-- #primary-menu end -->
                     @else

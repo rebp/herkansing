@@ -37,4 +37,12 @@ class HomeController extends Controller
         return view('public.show', compact('post', 'comments', 'categories'));
     }
 
+    public function search(Request $request)
+    {
+        $posts = Post::where('title', 'like', '%'.$request->q.'%')->get();
+        $categories = Category::all();
+    
+        return view('public.index', compact('posts', 'categories'));
+    }
+
 }
