@@ -68,9 +68,9 @@ class CommentsController extends Controller
             $user_profile_photo = $user->photo->file;
         }
 
-        $user_comments = Comment::where('author', $user->name)->get();
+        $user_comments = Comment::where('author', $user->name)->count();
 
-        if( $user->role_id == 3 && count( $user_comments ) > 1 ) {
+        if( $user->role_id == 3 && $user_comments > 1 ) {
 
             $user->update([
                 'role_id' => 2

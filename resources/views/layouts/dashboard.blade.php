@@ -53,20 +53,20 @@
 
 							<li><a href="{{ route('profile.index') }}"><div><i class="icon-user"></i> Profile</div></a></li>
 
-							@if ( auth()->user()->isAdmin())
+							@can('admin')
 								<li><a href="#"><div><i class="icon-users"></i> Users</div>
 									<ul>
 										<li><a href="{{ route('users.index') }}"><div>All Useres</div></a></li>
 										<li><a href="{{ route('users.create') }}"><div>Create User</div></a></li>									
 									</ul>
 								</li>								
-							@endif	
+							@endcan	
 								
 								
-							@if ( auth()->user()->isAdmin() or auth()->user()->isAuthor() )
+							@if ( auth()->user()->can('admin') or auth()->user()->can('author') )
 								<li><a href="#"><div><i class="icon-pencil2"></i> Posts</div></a>
 									<ul>
-										<li><a href="{{ route('posts.index') }}"><div>{{ ( auth()->user()->isAdmin() ) ? "All Posts" : "My Posts" }}</div></a></li>
+										<li><a href="{{ route('posts.index') }}"><div>{{ ( auth()->user()->can('admin') ) ? "All Posts" : "My Posts" }}</div></a></li>
 										<li><a href="{{ route('posts.create') }}"><div>Create Post</div></a></li>								
 									</ul>
 								</li>
